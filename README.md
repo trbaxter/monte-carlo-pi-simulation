@@ -120,7 +120,7 @@ flowchart LR
 
 <br>
 
-## Future Ideas for Improvement
+## Some Future Ideas for Improvement
 
 ### **Add text to JFrame indicating approximation value**
 
@@ -142,14 +142,12 @@ This would give the user a sense of how the number of points directly influences
 
 Currently, when the first point is painted, it gets completely erased and doesn't persist in the plot.  
 This requires the program to add an extra point onto the amount requested by the user and ignore the first element
-in the ArrayList.  
-While it works, it isn't exactly ideal and could probably be configured better.
+in the ArrayList. While it works, it isn't exactly ideal and could probably be configured better.
 
 <br>
 
 ### **Add point progress timer**
 
 When a user enters a _very large_ number of points, the GUI will fill out every point in the square long before
-the simulation is finished.  
-This could lead to a long wait without any indication to the user. Something like "Drawing point x / total points"
-that's updated in real-time would be nice. 
+the simulation is finished. This could lead to a long wait without any indication to the user.  
+Something like "Drawing point x / total points" that's updated in real-time would be nice. 
