@@ -16,7 +16,7 @@ Once the number of points are assigned, the program configures a GUI frame and e
 3.) Save the coordinate in an ArrayList.  
 4.) Paint the point in the GUI using the last pair of coordinates in the ArrayList.
 
-<img src="Pictures/MonteCarlo Sample Run 2.png" width="300" height="300" alt="">
+<img src="Pictures/MonteCarlo Sample Run 2.gif" width="300" height="300" alt="">
 
 
 Once all points have been painted, it then:
@@ -30,7 +30,8 @@ $$ π = 4 \cdot \dfrac{\text{Number of points inside the circle}}{{\text{Total n
 
 ```mermaid
 
-flowchart LR
+
+flowchart TD
 
 %% Start %%
     start(["Start"]):::start
@@ -53,24 +54,25 @@ flowchart LR
     D2{"Paint more\n(x,y)?"}:::decision
     D3{"Is (x,y) \n in circle?"}:::decision
     D4{"Any points \n left in \n ArrayList?"}:::decision
+
 %% Links %%
     start --> O1
     O1 --> I1
     I1 --> D1
-    D1 -.->|<b> &nbsp No &nbsp| I1
-    D1 -->|<b> &nbsp Yes &nbsp| A1
+    D1 -.->|&nbsp No &nbsp| I1
+    D1 -->|&nbsp Yes &nbsp| A1
     D4 --> A5
     A5 --> O3
     O3 --> finish
 
-    subgraph Point Generation Loop
-        D2 -.->|<b> &nbsp Yes &nbsp| A1
+    subgraph "Point Generation &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; \n &emsp;&emsp; Loop"
+        D2 -.->|&nbsp Yes &nbsp| A1
         A1 --> A2
         A2 --> O2
         O2 --> D2
     end
 
-    subgraph Point Counting Loop
+    subgraph "Point Counting &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; \n &emsp; &emsp;Loop"
         D2 -->|<b> &nbsp No &nbsp| A3
         A3 --> D3
         D3 -->|<b> &nbsp Yes &nbsp| A4
@@ -86,8 +88,6 @@ flowchart LR
     classDef input stroke: #ca14de, stroke-width: 2.5px;
     classDef output stroke: #ede205, stroke-width: 2.5px;
     classDef empty width: 0px, height: 0px;
-
-
 ```
 
 ## Diagram Legend
@@ -97,12 +97,12 @@ flowchart LR
 flowchart LR
 
 %% Diagram Legend Shapes %%    
-    L1(["&nbsp App start &nbsp"]):::start
-    L2["&nbsp&nbsp Program &nbsp&nbsp \n Action "]:::action
-    L3[/"&nbsp Program Output &nbsp"/]:::output
-    L4[/"&nbsp User Input &nbsp"/]:::input
+    L1([" App start  "]):::start
+    L2["&nbsp Program &nbsp \n Action "]:::action
+    L3[/" Program Output "/]:::output
+    L4[/" User Input "/]:::input
     L5{"Decision"}:::decision
-    L6(["&nbsp App finish &nbsp"]):::finish
+    L6([" App finish "]):::finish
 %% Links %%        
     L1 ~~~ L2 ~~~ L3 ~~~ L4 ~~~ L5 ~~~ L6
 %% Class Colors %%
@@ -147,4 +147,4 @@ in the ArrayList. While it works, it isn't exactly ideal and could probably be c
 
 When a user enters a _very large_ number of points, the GUI will fill out every point in the square long before
 the simulation is finished. This could lead to a long wait without any indication to the user.  
-Something like "Drawing point x / total points" that's updated in real-time would be nice. 
+Something like "Drawing point x / total points" that's updated in real-time would be nice.
