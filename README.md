@@ -123,7 +123,7 @@ flowchart LR
 
 Rather than displaying the estimation result in the console, it would be cool to see the estimation change in
 real-time.  
-This could be achieved by adding a text line in the JFrame window that updates every time repaint occurs.
+This could be achieved by adding a text line in the JFrame window that updates every time repaint occurs.  
 (Maybe at the bottom?)
 
 <br>
