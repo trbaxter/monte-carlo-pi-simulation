@@ -43,7 +43,7 @@ flowchart LR
     A4["&nbsp Count it &nbsp"]:::action
     A5["Estimate π \n &nbsp using count &nbsp"]:::action
 %% Input %%
-    I1[/"&nbsp User enters\n  points &nbsp"/]:::input
+    I1[/"&nbsp User enters\n points &nbsp"/]:::input
 %% Output %%
     O1[/"&nbsp Display request \n for points"/]:::output
     O2[/" &nbsp Paint (x,y) \n in JFrame &nbsp"/]:::output
@@ -53,31 +53,30 @@ flowchart LR
     D2{"Paint more\n(x,y)?"}:::decision
     D3{"Is (x,y) \n in circle?"}:::decision
     D4{"Any points \n left in \n ArrayList?"}:::decision
-
 %% Links %%
     start --> O1
     O1 --> I1
     I1 --> D1
-    D1 -.-> |<b> &nbsp No &nbsp|I1
-    D1 --> |<b> &nbsp Yes &nbsp|A1
+    D1 -.->|<b> &nbsp No &nbsp| I1
+    D1 -->|<b> &nbsp Yes &nbsp| A1
     D4 --> A5
     A5 --> O3
     O3 --> finish
 
-subgraph Point Generation Loop
-    D2 -.-> |<b> &nbsp  Yes &nbsp|A1
-    A1 --> A2
-    A2 --> O2
-    O2 --> D2
-end
+    subgraph Point Generation Loop
+        D2 -.->|<b> &nbsp Yes &nbsp| A1
+        A1 --> A2
+        A2 --> O2
+        O2 --> D2
+    end
 
-subgraph Point Counting Loop
-    D2 --> |<b> &nbsp No &nbsp|A3
-    A3 --> D3
-    D3 --> |<b> &nbsp Yes &nbsp|A4
-    A4 --> D4
-    D4 -.-> |<b> &nbsp No &nbsp|D3
-end
+    subgraph Point Counting Loop
+        D2 -->|<b> &nbsp No &nbsp| A3
+        A3 --> D3
+        D3 -->|<b> &nbsp Yes &nbsp| A4
+        A4 --> D4
+        D4 -.->|<b> &nbsp No &nbsp| D3
+    end
 
 %% Class Colors %%
     classDef start stroke: #0f0, stroke-width: 2.5px;
@@ -87,7 +86,7 @@ end
     classDef input stroke: #ca14de, stroke-width: 2.5px;
     classDef output stroke: #ede205, stroke-width: 2.5px;
     classDef empty width: 0px, height: 0px;
-    
+
 
 ```
 
@@ -103,11 +102,9 @@ flowchart LR
     L3[/"&nbsp Program Output &nbsp"/]:::output
     L4[/"&nbsp User Input &nbsp"/]:::input
     L5{"Decision"}:::decision
-    L6(["&nbsp App finish &nbsp"]):::finish     
-
+    L6(["&nbsp App finish &nbsp"]):::finish
 %% Links %%        
     L1 ~~~ L2 ~~~ L3 ~~~ L4 ~~~ L5 ~~~ L6
-    
 %% Class Colors %%
     classDef start stroke: #0f0, stroke-width: 2.5px;
     classDef finish stroke: #f00, stroke-width: 2.5px;
@@ -126,7 +123,7 @@ flowchart LR
 
 Rather than displaying the estimation result in the console, it would be cool to see the estimation change in
 real-time.  
-This could be achieved by adding a text line in the JFrame window that updates every time repaint occurs.
+This could be achieved by adding a text line in the JFrame window that updates every time repaint occurs.  
 (Maybe at the bottom?)
 
 <br>
@@ -142,14 +139,12 @@ This would give the user a sense of how the number of points directly influences
 
 Currently, when the first point is painted, it gets completely erased and doesn't persist in the plot.  
 This requires the program to add an extra point onto the amount requested by the user and ignore the first element
-in the ArrayList.  
-While it works, it isn't exactly ideal and could probably be configured better.
+in the ArrayList. While it works, it isn't exactly ideal and could probably be configured better.
 
 <br>
 
 ### **Add point progress timer**
 
 When a user enters a _very large_ number of points, the GUI will fill out every point in the square long before
-the simulation is finished.  
-This could lead to a long wait without any indication to the user. Something like "Drawing point x / total points"
-that's updated in real-time would be nice. 
+the simulation is finished. This could lead to a long wait without any indication to the user.  
+Something like "Drawing point x / total points" that's updated in real-time would be nice. 
